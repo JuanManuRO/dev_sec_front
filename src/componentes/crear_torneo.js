@@ -4,7 +4,6 @@ import Stack from 'react-bootstrap/Stack';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-// import InputGroup from 'react-bootstrap/InputGroup';
 
 const temas_prueba = {
     python: 1,
@@ -27,14 +26,6 @@ function crearSelTem() {
 function CrearTorneo () {
     
     const [TorDetails, setDetails] = useState({torTema: "", torPreg: "", torPart: "", torFecha: "" });
-
-    
-    const submitHandler = e => {
-        e.preventDefault();
-
-        //Login(details);
-    }
-    
     
     const [validated, setValidated] = useState(false);
 
@@ -106,7 +97,7 @@ function CrearTorneo () {
             </Form.Group>
 
             <Row className="justify-content-md-center">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className = "button">
                 Submit
             </Button>
             </Row>
