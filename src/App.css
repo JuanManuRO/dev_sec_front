@@ -67,3 +67,69 @@
 	border-radius: 25px;
 	cursor: pointer;
 }
+
+.Preguntas{
+    background-color:black;
+    text-align: center;
+    padding: 40px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Contenedor-preguntas{
+    max-width: 60%;
+  }
+  
+  .FormPreguntas {
+    text-align: left;
+    padding: 40px 30px;
+  }
+  
+  h1#titulo-preguntas{
+    text-align: center;
+    color: #d9d9d9;
+  }
+  
+  p#pregunta{
+    color:black;
+    font-size: 17px;
+  }
+  
+  label{
+    cursor: pointer;
+    color:#D9D9D9;
+    padding: 0px 10px
+  }
+  
+  input#submit-preguntas{
+    padding: 5px 20px;
+    background-color: #E61B4A;
+    border-radius: 10px;
+    color: #D9D9D9;
+  }
+  
+  .formGroupRadios{
+    display: block;
+    padding: 0 30px
+  }
+  
+  .formGroupRadios > .form-group{
+    padding-left: 15px;
+  }
+  
+  .form-check-label{
+    padding-left: 3px;
+  }
+  
+  .divSubmit{
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;;
+  }
+  
+  .fondoPregunta{
+    padding: 15px 15px 1px 15px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+  }
