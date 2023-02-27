@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Pregunta } from './Pregunta';
-import axios from'axios';
+import { useNavigate} from 'react-router-dom';
+// import axios from'axios';
 
 
 /* VERSIÓN CON BACKEND (incompleto, probablemente no funciona)*/
@@ -33,6 +34,8 @@ import axios from'axios';
 
 const FormPreguntas=()=>{
 
+    const navigate = useNavigate();
+
     const arraypreguntas=[
         {idpregunta: "hola123", pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"},
         {idpregunta: "probando", pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"},
@@ -55,6 +58,9 @@ const FormPreguntas=()=>{
     const enviarRespuestas = (e) =>{
         e.preventDefault();
         setRespuestas(idpreguntas) //se actualiza por el map de forma idpregunta:respuesta
+        if (true) {
+            navigate('/reportes')
+        }
     }
 
     arraypreguntas.forEach((pregunta)=> preguntas.push(<Pregunta idpregunta={pregunta.idpregunta} pregunta={pregunta.pregunta} opcion1={pregunta.opcion1} opcion2={pregunta.opcion2} opcion3={pregunta.opcion3} opcion4={pregunta.opcion4} respuestaAForm={respuestaAForm}/>)) //para renderizar el numero de preguntas que lleguen

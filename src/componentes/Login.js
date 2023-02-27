@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react'
+import {useNavigate, Link} from 'react-router-dom';
 
 import Tittle from './Tittle';
 import Label from './Label';
@@ -7,6 +8,7 @@ import Input from './Input';
 
 
 const Login = () => {
+  const navigate = useNavigate();
 
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
@@ -24,6 +26,9 @@ const Login = () => {
     let account = { user, password }
     if (account) {
       console.log('account:', account)
+    }
+    if (true) {
+      navigate('/preguntas')
     }
   };
   return (
@@ -58,7 +63,8 @@ const Login = () => {
           <button onClick={HandleSubmit} className='button'>
             ¡Listo!
           </button>
-        <Label text ='¿Sin cuenta?'/>
+          <Link to = {'./registro'}>¿Sin cuenta?</Link>
+        
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {useNavigate, Link} from 'react-router-dom';
 
 import Tittle from './Tittle';
 import Label from './Label';
@@ -7,7 +8,7 @@ import Input from './Input';
 
 
 const Registro = () => {
-
+  const navigate = useNavigate();
 
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
@@ -28,6 +29,9 @@ const Registro = () => {
     let newaccount = { user, password, email }
     if (newaccount) {
       console.log('new account:', newaccount)
+    }
+    if (true) {
+      navigate('/')
     }
   };
   return (
@@ -74,7 +78,7 @@ const Registro = () => {
             <button onClick={HandleSubmit} className='button'>
               ¡Listo!
             </button>
-            <Label text='¿Ya tienes cuenta?' />
+            <Link to = {'/'}>¿Ya tienes cuenta?</Link>
           </div>
         </div>
       </div>

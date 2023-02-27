@@ -6,6 +6,7 @@ import Login from './componentes/Login'
 import Registro from './componentes/Registro'
 import CrearTorneo from './componentes/crear_torneo'
 import FormPreguntas from './componentes/FormPreguntas'
+import Reportes from './componentes/reportes'
 
 document.body.style = 'background: #000000;';
 
@@ -13,13 +14,13 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <h1>todo ok..</h1>
         <hr/>
         <Routes>
           <Route exact path='/' element = { <Login/> }/>
           <Route exact path='/registro' element = { <Registro/> }/>
           <Route exact path='/crear_torneo' element = { <CrearTorneo/> }/>
           <Route exact path='/preguntas' element = {<FormPreguntas/> }/>
+          <Route exact path='/reportes' element = {<Reportes/> }/>
         </Routes>
         
         {/*
