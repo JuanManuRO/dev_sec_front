@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {useNavigate, Link} from 'react-router-dom';
+import Api from '../apis/api';
 
 import Tittle from './Tittle';
 import Label from './Label';
@@ -26,6 +27,9 @@ const Registro = () => {
   };
 
   function HandleSubmit() {
+    const api=new Api();
+    api.postRegistro({name:user})
+    
     let newaccount = { user, password, email }
     if (newaccount) {
       console.log('new account:', newaccount)
