@@ -1,71 +1,74 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Pregunta } from './Pregunta';
 import { useNavigate} from 'react-router-dom';
-// import axios from'axios';
-
-
-/* VERSIÓN CON BACKEND (incompleto, probablemente no funciona)*/
-/*const FormPreguntas = () => {
-    useEffect(()=>{
-        axios.get('link_servidor')
-            .then(res=>{
-                console.log(res.data.data);
-                setPreguntas(res.data.data)
-            })
-            .catch(err=>{
-                console.log(err);
-            })
-    },[])
-
-    const [pregunta, setPreguntas] = useState([])
-
-    const preguntas=pregunta.map((data, id)=>{
-        return <div key={id}>
-            <Pregunta idpregunta={data.idpregunta} pregunta={data.pregunta} opcion1={data.opcion1} opcion2={data.opcion2} opcion3={data.opcion3} opcion4={data.opcion4}/>
-        </div>
-    })
-    
-    return(
-        preguntas
-    );
-}*/
-
-
+import Api from '../apis/api';
 
 const FormPreguntas=()=>{
 
     const navigate = useNavigate();
 
-    const arraypreguntas=[
+    //preguntas de prueba
+    /*const arraypreguntas=[
         {idpregunta: "hola123", pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"},
         {idpregunta: "probando", pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"},
         {idpregunta: "funcionaa", pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"}
-    ]//preguntas de prueba
+    ]*/
 
-    let preguntas =[]; //para renderizar el numero de preguntas que lleguen
+    const api = new Api();
+    const preguntasApi = api.getPreguntas();
+    const preguntas=preguntasApi.map((data, id)=>{
+        return <div key={id}>
+            <Pregunta idpregunta={data.idpregunta} pregunta={data.pregunta} opcion1={data.opcion1} opcion2={data.opcion2} opcion3={data.opcion3} opcion4={data.opcion4} respuestaAForm={respuestaAForm}/>
+        </div>
+    })
+
+    //let preguntas =[]; //para renderizar el numero de preguntas que lleguen con arraypreguntas
     let idpreguntas = {}; //para actualizar State de FormPreguntas
     
     const [respuestas, setRespuestas] = useState({});
 
     const respuestaAForm=(id, respuestapregunta)=>{
-        if (id === undefined | respuestapregunta === undefined){}
+        if (id === undefined){throw "undefinedID"}
         else{
            idpreguntas[id]=respuestapregunta 
         }
-        //console.log(idpreguntas) //para pruebas
-    } //para Lifting
+    }//para Lifting
     
     const enviarRespuestas = (e) =>{
-        e.preventDefault();
-        setRespuestas(idpreguntas) //se actualiza por el map de forma idpregunta:respuesta
-        if (true) {
-            navigate('/reportes')
+        e.preventDefault()
+        setRespuestas(idpreguntas);
+        errorRespuestas();
+    }
+    
+    const errorRespuestas = () =>{ //para no enviar respuestas vacías
+        try {
+            emptyResponse();
+            api.postPreguntas(respuestas);
+            navigate("/crear_torneo");
+        } catch (err){
+            alert("RESPONDA TODAS LAS PREGUNTAS (si ya ha respondido, ignore este mensaje y vuelva a Enviar"); //no logré que todas las respuestas se actualizaran al instante, pero sirve dando un click más al botón de Enviar
         }
     }
 
-    arraypreguntas.forEach((pregunta)=> preguntas.push(<Pregunta idpregunta={pregunta.idpregunta} pregunta={pregunta.pregunta} opcion1={pregunta.opcion1} opcion2={pregunta.opcion2} opcion3={pregunta.opcion3} opcion4={pregunta.opcion4} respuestaAForm={respuestaAForm}/>)) //para renderizar el numero de preguntas que lleguen
+    const emptyResponse=()=>{ //error de respuestas vacías
+        let error=0;
+        let cont=0;
+        for(var respuesta in respuestas){
+            cont++;
+            console.log(respuestas[respuesta])
+            if (respuestas[respuesta]===undefined){
+                error++;
+            }
+        }
+        if(error>0 | cont===0){
+            throw "emptyResponse"
+        }
+    }
 
-    arraypreguntas.forEach((pregunta)=> idpreguntas[pregunta.idpregunta]='') //para crear el map de forma idpregunta:respuesta
+    //para preguntas de prueba
+    /*arraypreguntas.forEach((pregunta)=> preguntas.push(<Pregunta idpregunta={pregunta.idpregunta} pregunta={pregunta.pregunta} opcion1={pregunta.opcion1} opcion2={pregunta.opcion2} opcion3={pregunta.opcion3} opcion4={pregunta.opcion4} respuestaAForm={respuestaAForm}/>)) //para renderizar el numero de preguntas que lleguen
+
+    arraypreguntas.forEach((pregunta)=> idpreguntas[pregunta.idpregunta]='') //para crear el map de forma idpregunta:respuesta*/
 
     
     return <div className="Preguntas">

@@ -4,15 +4,22 @@ import Stack from 'react-bootstrap/Stack';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Api from '../apis/api';
+// const temas_prueba = {
+//     python: 1,
+//     c: 2,
+//     r: 3,
+//     ruby: 4    
+// }; 
 
 const temas_prueba = {
-    python: 1,
-    c: 2,
-    r: 3,
-    ruby: 4    
-}; 
+
+}
 
 function crearSelTem() {
+    const api = new Api();
+
+    const topics = api.getTopics();
     let opciones = [];
     let temas = Object.keys(temas_prueba);
     temas.forEach((tema)=> opciones.push(<option>{tema}</option>));
@@ -24,6 +31,7 @@ function crearSelTem() {
 
 
 function CrearTorneo () {
+
     
     const [TorDetails, setDetails] = useState({torTema: "", torPreg: "", torPart: "", torFecha: "" });
     

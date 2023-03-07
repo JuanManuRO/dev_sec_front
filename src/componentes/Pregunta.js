@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FormGroup, Label, Input } from "reactstrap";
 
 export function Pregunta({
@@ -12,10 +12,18 @@ export function Pregunta({
   respuestaAForm //para Lifting
 }) {
   const [respuesta, setRespuesta] = useState();
-  const cambioRadioRespuesta = (e) => {
-    setRespuesta(e.target.value) //no sé por qué, pero la actualización está con delay
+
+  useEffect(()=>{ //para actualizar instantáneamente
+    if (respuesta===undefined){}
+    else{
+      respuestaAForm(idpregunta, respuesta);
+    }
+  },[respuesta, idpregunta, respuestaAForm]);
+
+  const cambioRadioRespuesta= (e)=>{
+    setRespuesta(e.target.value)
     respuestaAForm(idpregunta, respuesta) //para lifting
-  };
+  }
 
   return (
     <div className="FormPreguntas">
