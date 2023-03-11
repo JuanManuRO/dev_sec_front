@@ -4,7 +4,8 @@ import Stack from 'react-bootstrap/Stack';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Api from './Api';
+import Api from '../apis/api';
+import {useNavigate, Link} from 'react-router-dom';
 import './ingresar_torneo.css'
 // const temas_prueba = {
 //     python: 1,
@@ -16,8 +17,12 @@ import './ingresar_torneo.css'
  
 
 function IngresarTorneo () {
+    const navigate = useNavigate();
 
-    
+    const ir_reportes = ()=>{
+      navigate('/reportes')
+    }
+  
     const [TorDetails, setDetails] = useState({torTema: "", torPreg: "", torPart: "", torFecha: "" });
     
     const [validated, setValidated] = useState(false);
@@ -29,6 +34,9 @@ function IngresarTorneo () {
             event.stopPropagation();
         }
         setValidated(true);
+        if (true) {
+          navigate('/preguntas')
+        }
     };
 
     return (
@@ -53,7 +61,7 @@ function IngresarTorneo () {
               <div className='text_no'>
               ¿No tienes un torneo?
               </div>
-              <button type="button" class="btn btn-link">Crea uno</button>
+              <Link to = {'/crear_torneo'}>Crea uno</Link>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formFecha">
             <div className='text_no'>
@@ -61,7 +69,7 @@ function IngresarTorneo () {
             </div>
             </Form.Group>
             <Row className="justify-content-md-center">
-            <Button variant="primary" type="submit" className = "button">
+            <Button variant="primary"  className = "button" onClick = {ir_reportes}>
                 ¡Vamos!
             </Button>
             </Row>

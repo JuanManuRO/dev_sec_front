@@ -3,3 +3,6 @@
 Librerias necesarias:
 - React
 - Bootstrap
+- prop-types
+- reactstrap
+- axios

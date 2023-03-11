@@ -28,7 +28,7 @@ const Login = () => {
       console.log('account:', account)
     }
     if (true) {
-      navigate('/preguntas')
+      navigate('/ingresar')
     }
   };
   return (
