@@ -13,6 +13,7 @@ const Registro = () => {
 
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
+  const [conf_password, setConfPassword] = useState('');
   const [email, setEmail] = useState('');
 
   function HandleChange(name, value) {
@@ -21,7 +22,10 @@ const Registro = () => {
     } else if (name === 'contraseña') {
       setPassword(value)
 
-    } else {
+    } else if (name === 'conf_contraseña') {
+      setConfPassword(value)
+
+    }else {
       setEmail(value)
     }
   };
@@ -29,8 +33,8 @@ const Registro = () => {
   function HandleSubmit() {
     const api=new Api();
     api.postRegistro({name:user})
-    
-    let newaccount = { user, password, email }
+
+    let newaccount = { user, password, conf_password ,email }
     if (newaccount) {
       console.log('new account:', newaccount)
     }
@@ -62,6 +66,17 @@ const Registro = () => {
               name: 'contraseña',
               type: 'password',
               placeholder: 'Ingrese su contraseña'
+            }}
+            handleChange={HandleChange}
+
+          />
+          <Label text='Confirmar contraseña:' />
+          <Input
+            attribute={{
+              id: 'conf_contraseña',
+              name: 'conf_contraseña',
+              type: 'password',
+              placeholder: 'Confirmar contraseña'
             }}
             handleChange={HandleChange}
 
