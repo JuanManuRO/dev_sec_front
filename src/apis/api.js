@@ -34,7 +34,15 @@ class Api{
         }
     }
 
-    //BORRADOR GET Y POST PREGUNTAS
+    postLogin=async (name) => {
+        axios.post(ip_login, name)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
 
     getPreguntas = async (page) => {
         try {
