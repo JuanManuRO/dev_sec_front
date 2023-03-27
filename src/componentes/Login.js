@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import {useNavigate, Link} from 'react-router-dom';
+import Api from '../apis/api';
 
 import Tittle from './Tittle';
 import Label from './Label';
@@ -23,11 +24,15 @@ const Login = () => {
   };
 
   function HandleSubmit() {
+    const api=new Api();
+    const response=api.postLogin({name:user, password:password})
+    console.log(response)
+
     let account = { user, password }
     if (account) {
       console.log('account:', account)
     }
-    if (true) {
+    if (false) {
       navigate('/ingresar')
     }
   };
