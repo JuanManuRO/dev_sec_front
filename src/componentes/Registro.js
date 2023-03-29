@@ -35,7 +35,11 @@ const Registro = () => {
 
   function HandleSubmit() {
     const api=new Api();
-    api.postRegistro(name:{ user, password, conf_password ,email, tema_interes })
+    api.postRegistro({username: user,
+                     password: password, 
+                     password2: conf_password,
+                     email: email,
+                     tema_interes: tema_interes})
 
     let newaccount = { user, password, conf_password ,email, tema_interes }
     if (newaccount) {
