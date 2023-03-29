@@ -1,6 +1,6 @@
 import axios from 'axios';
-const ip_temas = `http://10.19.64.54:3001/api/v1/topics`
-const ip_registro = `http://10.19.64.203:5000/signback`
+const ip_temas = `http://18.235.214.57:3001/api/v1/topics`
+const ip_registro = `http://34.230.74.127:5000/register`
 const ip_login = `http://10.19.64.199:3000/api/auth/login`
 const ip_torneo = ``
 
@@ -24,7 +24,7 @@ class Api{
     postRegistro=async (name) => {
         try {
             console.log(name)
-            const rest = await this.API.post(ip_temas, name)
+            const rest = await this.API.post(ip_registro, name)
 
             console.log(rest.data.message)
             alert("Credenciales correctas")
