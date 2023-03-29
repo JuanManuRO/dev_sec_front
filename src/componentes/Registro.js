@@ -15,6 +15,7 @@ const Registro = () => {
   const [password, setPassword] = useState('');
   const [conf_password, setConfPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [tema_interes, setTema] = useState('');
 
   function HandleChange(name, value) {
     if (name === 'usuario') {
@@ -25,16 +26,18 @@ const Registro = () => {
     } else if (name === 'conf_contraseña') {
       setConfPassword(value)
 
-    }else {
+    }else if (name === 'tema_interes') {
+      setTema(value)
+    } else {
       setEmail(value)
     }
   };
 
   function HandleSubmit() {
     const api=new Api();
-    api.postRegistro({name:user})
+    api.postRegistro({ user, password, conf_password ,email, tema_interes })
 
-    let newaccount = { user, password, conf_password ,email }
+    let newaccount = { user, password, conf_password ,email, tema_interes }
     if (newaccount) {
       console.log('new account:', newaccount)
     }
@@ -92,6 +95,17 @@ const Registro = () => {
             handleChange={HandleChange}
 
           />
+          <Label text='Tema de interés:' />
+          <Input
+            attribute={{
+              id: 'tema_interes',
+              name: 'tema_interes',
+              type: 'text',
+              placeholder: 'Tema de interés:'
+            }}
+            handleChange={HandleChange}
+
+          />  
 
           <div className='submit-button-container'>
             <button onClick={HandleSubmit} className='button'>
