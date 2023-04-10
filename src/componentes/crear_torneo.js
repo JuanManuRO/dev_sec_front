@@ -18,11 +18,9 @@ const temas_prueba = {
 
 function crearSelTem() {
     const api = new Api();
-
     const topics = api.getTopics();
     let opciones = [];
-    let temas = Object.keys(temas_prueba);
-    temas.forEach((tema)=> opciones.push(<option>{tema}</option>));
+    topics["topics"].forEach((tema)=> opciones.push(<option>{tema["name"]}</option>));
     return opciones;
 };  
 
