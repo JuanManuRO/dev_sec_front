@@ -1,6 +1,6 @@
 import axios from 'axios';
 const ip_temas = `http://18.235.214.57:3001/api/v1/topics`
-const ip_registro = `http://34.226.45.247:5000/register`
+const ip_registro = `http://54.86.40.212:5000/register`
 const ip_login = `http://10.19.64.199:3000/api/auth/login`
 const ip_torneo = ``
 
