@@ -35,14 +35,24 @@ class Api{
     }
 
     postLogin=async (name) => {
-        axios.post(ip_login, name)
+        try {
+            console.log(name)
+            const rest = await this.API.post(ip_login, name)
+
+            console.log(rest.data.message)
+            alert("Credenciales correctas")
+        } catch (e) {
+            console.log(e)
+            alert("Credenciales incorrectas")
+        }
+        /*axios.post(ip_login, name)
           .then(function (response) {
             console.log(response);
           })
           .catch(function (error) {
             console.log(error);
             alert('Credenciales incorrectas')
-          });
+          });*/
     }
 
     getPreguntas = async (page) => {
