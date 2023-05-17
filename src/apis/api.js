@@ -2,7 +2,7 @@ import axios from 'axios';
 const ip_temas = `http://18.235.214.57:3001/api/v1/topics`
 const ip_registro = `http://54.86.40.212:5000/register`
 const ip_login = `http://34.226.45.247:3000` ///api/auth/login
-const ip_torneo = `http://34.227.157.253:3000`
+const ip_torneo = `http://34.227.157.253:3000/torneo`
 
 
 class Api{
