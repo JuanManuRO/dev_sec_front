@@ -25,8 +25,8 @@ const Login = () => {
 
   function HandleSubmit() {
     const api=new Api();
-    const response=api.postLogin({name:user, password:password})
-    console.log(response)
+    const response=api.postLogin({username:user, password:password})
+    alert(response)
 
     let account = { user, password }
     if (account) {
@@ -34,6 +34,7 @@ const Login = () => {
     }
     if (false) {
       navigate('/ingresar')
+      
     }
   };
   return (
