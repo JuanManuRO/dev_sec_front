@@ -41,6 +41,7 @@ class Api{
           })
           .catch(function (error) {
             console.log(error);
+            alert('Credenciales incorrectas')
           });
     }
 
