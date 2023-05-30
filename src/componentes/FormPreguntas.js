@@ -8,21 +8,21 @@ const FormPreguntas=()=>{
     const navigate = useNavigate();
 
     //preguntas de prueba
-    /*const arraypreguntas=[
-        {idpregunta: "hola123", pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"},
-        {idpregunta: "probando", pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"},
-        {idpregunta: "funcionaa", pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"}
-    ]*/
+    const arraypreguntas=[
+        {idpregunta: "pregunta1", /*pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"*/},
+        {idpregunta: "pregunta2", /*pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"*/},
+        {idpregunta: "pregunta3", /*pregunta:"pregunta", opcion1:"a", opcion2:"b", opcion3:"c", opcion4:"d"*/}
+    ]
 
-    const api = new Api();
+    /*const api = new Api();
     const preguntasApi = api.getPreguntas();
     const preguntas=preguntasApi.map((data, id)=>{
         return <div key={id}>
             <Pregunta idpregunta={data.idpregunta} pregunta={data.pregunta} opcion1={data.opcion1} opcion2={data.opcion2} opcion3={data.opcion3} opcion4={data.opcion4} respuestaAForm={respuestaAForm}/>
         </div>
-    })
+    })*/
 
-    //let preguntas =[]; //para renderizar el numero de preguntas que lleguen con arraypreguntas
+    let preguntas =[]; //para renderizar el numero de preguntas que lleguen con arraypreguntas
     let idpreguntas = {}; //para actualizar State de FormPreguntas
     
     const [respuestas, setRespuestas] = useState({});
@@ -43,7 +43,7 @@ const FormPreguntas=()=>{
     const errorRespuestas = () =>{ //para no enviar respuestas vacías
         try {
             emptyResponse();
-            api.postPreguntas(respuestas);
+            //api.postPreguntas(respuestas);
             navigate("/crear_torneo");
         } catch (err){
             alert("RESPONDA TODAS LAS PREGUNTAS (si ya ha respondido, ignore este mensaje y vuelva a Enviar"); //no logré que todas las respuestas se actualizaran al instante, pero sirve dando un click más al botón de Enviar
@@ -66,9 +66,9 @@ const FormPreguntas=()=>{
     }
 
     //para preguntas de prueba
-    /*arraypreguntas.forEach((pregunta)=> preguntas.push(<Pregunta idpregunta={pregunta.idpregunta} pregunta={pregunta.pregunta} opcion1={pregunta.opcion1} opcion2={pregunta.opcion2} opcion3={pregunta.opcion3} opcion4={pregunta.opcion4} respuestaAForm={respuestaAForm}/>)) //para renderizar el numero de preguntas que lleguen
+    arraypreguntas.forEach((pregunta)=> preguntas.push(<Pregunta idpregunta={pregunta.idpregunta} pregunta={pregunta.pregunta} opcion1={pregunta.opcion1} opcion2={pregunta.opcion2} opcion3={pregunta.opcion3} opcion4={pregunta.opcion4} respuestaAForm={respuestaAForm}/>)) //para renderizar el numero de preguntas que lleguen
 
-    arraypreguntas.forEach((pregunta)=> idpreguntas[pregunta.idpregunta]='') //para crear el map de forma idpregunta:respuesta*/
+    arraypreguntas.forEach((pregunta)=> idpreguntas[pregunta.idpregunta]='') //para crear el map de forma idpregunta:respuesta
 
     
     return <div className="Preguntas">
