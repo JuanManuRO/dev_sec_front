@@ -40,7 +40,7 @@ function IngresarTorneo () {
     };
 
     return (
-        <Stack className='App'>
+        <Stack className='Ingresar'>
         <div className='texto'>
           <h1>Ingresar a un Torneo</h1>
         </div>
