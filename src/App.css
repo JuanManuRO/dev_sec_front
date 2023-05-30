@@ -1,5 +1,8 @@
 .App{
     text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 5%;
 }
 
 .App-header {
@@ -78,12 +81,12 @@
   }
   
   .Contenedor-preguntas{
-    max-width: 60%;
+    max-width: 80%;
   }
   
   .FormPreguntas {
     text-align: left;
-    padding: 40px 30px;
+    padding-top: 40px;
   }
   
   h1#titulo-preguntas{
