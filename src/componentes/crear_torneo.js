@@ -48,6 +48,7 @@ function CrearTorneo () {
           alignItems: 'center',
           justifyContent: 'center',
           height: '50vh',
+          paddingTop: '30%'
         }}>
         <div>
         <h1 style = {{
